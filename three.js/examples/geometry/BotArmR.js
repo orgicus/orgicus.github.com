@@ -130,6 +130,9 @@ var BotArmR = function () {
 	f4( 41, 38, 34, 37, 1.000000, 0.000000, 0.000000 );
 	uv( 0.140674, 0.140674, 0.140674, 0.859326, 0.140674, 0.859326, 0.140674, 0.140674);
 
+	this.computeCentroids();
+	this.computeNormals(true);
+
 	scope.colors = {};
 	scope.selections = {};
 	scope.selections["c1"] = [8, 29, 30, 31, 32];
@@ -143,7 +146,7 @@ var BotArmR = function () {
 
 	scope.autoColor = function(){
 		for(var s in this.selections){
-			for(var i = 0 ; i < this.selections[s].length; i++) this.faces[this.selections[s][i]].material = [ new THREE.MeshColorFillMaterial( this.colors[s],1) ];
+			for(var i = 0 ; i < this.selections[s].length; i++) this.faces[this.selections[s][i]].material = [new THREE.MeshBasicMaterial({color:this.colors[s]})];
 		}
 	}
 
